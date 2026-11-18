@@ -1,0 +1,32 @@
+syntax = "proto3";
+
+package dice.v1;
+
+option go_package = "dnd-gateway/internal/dicepb;dicepb";
+
+// DiceService is the internal RPC used by the HTTP gateway.
+// It wraps the public dice API so other processes can share one client.
+service DiceService {
+  rpc Roll(RollRequest) returns (RollResponse);
+}
+
+message RollRequest {
+  string notation = 1;
+  int32 count = 2;
+  optional int64 seed = 3;
+}
+
+message DieRoll {
+  int32 index = 1;
+  string notation = 2;
+  repeated int32 dice = 3;
+  int32 modifier = 4;
+  int32 total = 5;
+}
+
+message RollResponse {
+  repeated DieRoll rolls = 1;
+  int64 seed = 2;
+  int32 count = 3;
+  string notation = 4;
+}
