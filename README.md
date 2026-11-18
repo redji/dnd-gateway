@@ -9,7 +9,7 @@ One executable listens for JSON over HTTP. Dice rolls go through an internal gRP
 
 ## Run
 
-Go 1.22 or newer is required. From this folder in PowerShell:
+Go 1.26 or newer is required. From this folder in PowerShell:
 
 ```powershell
 go mod tidy
